@@ -61,7 +61,7 @@ namespace BL
 
         public static int countOffers()
         {
-            return JobOffer.countOffers();
+            return OfferDB.countOffers();
         }
     }
 }

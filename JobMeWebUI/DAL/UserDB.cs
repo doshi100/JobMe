@@ -8,6 +8,18 @@ namespace DAL
 {
     public class UserDB
     {
+
+        public static DataRow ReturnUser(string userName)
+        {
+            DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
+            string sql = $"SELECT * FROM Users WHERE Users.UserName = {userName}";
+            DataTable dt = helper.GetDataTable(sql);
+            if(dt.Rows.Count > 0)
+            {
+                return dt.Rows[0];
+            }
+            return null;
+        }
         public static int AddUser(string userName, string password, string firstname)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);

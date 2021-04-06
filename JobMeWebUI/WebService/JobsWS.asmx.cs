@@ -33,22 +33,46 @@ namespace WebService
             return BL.User.CheckCredentials(username, password);
         }
 
+        /// <summary>
+        /// add Job Offer to the DB
+        /// </summary>
         [WebMethod]
-        public void AddJobOffer(string username, string phone, string company, string pos)
+        public void AddJobOffer(string username, string password, string phone, string company, string pos)
         {
-            JobOffer.AddOfferWS(username, phone, company, pos);
+            if(LogIn(username, password))
+            {
+                JobOffer.AddOfferWS(username, phone, company, pos);
+            }
         }
 
+
+        /// <summary>
+        /// Count how many job offers are in the DB
+        /// </summary>
         [WebMethod]
         public int countOffers()
         {
             return JobOffer.countOffers();
         }
 
+
+        /// <summary>
+        /// Gets The user First name from the db by the username provided
+        /// </summary>
         [WebMethod]
         public string getUserFName(string username)
         {
             return BL.User.GetUserFName(username);
+        }
+
+
+        /// <summary>
+        /// returns a User 
+        /// </summary>
+        [WebMethod]
+        public User GetUser(string username)
+        {
+            return BL.UserWS.ReturnUser(username);
         }
 
 

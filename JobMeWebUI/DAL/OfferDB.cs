@@ -8,6 +8,7 @@ namespace DAL
 {
     public class OfferDB
     {
+        // GETS ALL THE OFFERS OFF THE DB
         public static DataTable GetOffers()
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -15,6 +16,7 @@ namespace DAL
             DataTable dt = helper.GetDataTable(sql);
             return dt;
         }
+
 
         public static int AddOffer(int userID, string phone, string company, string pos)
         {
