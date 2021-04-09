@@ -37,14 +37,14 @@ namespace BL
             return OfferDB.AddOffer(userID, phone, company, pos);
         }
 
-        public static int AddOfferWS(string username, string phone, string company, string pos)
+        public static bool AddOfferWS(string username, string phone, string company, string pos)
         {
             Regex rg = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
             if (rg.IsMatch(phone) && company != "" && pos != "")
             {
                 return OfferDB.AddOfferWS(username, phone, company, pos);
             }
-            return -1;
+            return false;
         }
 
         public static List<JobOffer> GetOffers()

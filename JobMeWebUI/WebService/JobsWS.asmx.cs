@@ -37,12 +37,13 @@ namespace WebService
         /// add Job Offer to the DB
         /// </summary>
         [WebMethod]
-        public void AddJobOffer(string username, string password, string phone, string company, string pos)
+        public bool AddJobOffer(string username, string password, string phone, string company, string pos)
         {
             if(LogIn(username, password))
             {
-                JobOffer.AddOfferWS(username, phone, company, pos);
+                return JobOffer.AddOfferWS(username, phone, company, pos);
             }
+            return false;
         }
 
 
@@ -70,7 +71,7 @@ namespace WebService
         /// returns a User 
         /// </summary>
         [WebMethod]
-        public User GetUser(string username)
+        public UserWS GetUser(string username)
         {
             return BL.UserWS.ReturnUser(username);
         }

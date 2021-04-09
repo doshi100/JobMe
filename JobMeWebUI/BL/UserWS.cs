@@ -23,15 +23,15 @@ namespace BL
             this.username = (string)row["UserName"];
         }
 
-        public static User ReturnUser(string userName)
+        public static UserWS ReturnUser(string userName)
         {
             DataRow rowUser = UserDB.ReturnUser(userName);
             if (rowUser != null)
             {
-                User user1 = new User(rowUser);
+                UserWS user1 = new UserWS(rowUser);
                 return user1;
             }
-            User user = new User();
+            UserWS user = new UserWS();
             return user;
         }
     }

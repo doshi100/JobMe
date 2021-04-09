@@ -12,7 +12,7 @@ namespace DAL
         public static DataRow ReturnUser(string userName)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
-            string sql = $"SELECT * FROM Users WHERE Users.UserName = {userName}";
+            string sql = $"SELECT * FROM Users WHERE Users.UserName = '{userName}'";
             DataTable dt = helper.GetDataTable(sql);
             if(dt.Rows.Count > 0)
             {

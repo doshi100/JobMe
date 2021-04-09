@@ -12,7 +12,7 @@ namespace DAL
         public static DataTable GetOffers()
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
-            string sql = "SELECT Jobs.*, Users.UserName, Users.FirstName FROM Jobs INNER JOIN Users ON Jobs.UserID = Users.ID ORDER BY (Users.ID) DESC;";
+            string sql = "SELECT Jobs.*, Users.UserName, Users.FirstName FROM Jobs INNER JOIN Users ON Jobs.UserID = Users.ID ORDER BY (Jobs.OfferID) DESC;";
             DataTable dt = helper.GetDataTable(sql);
             return dt;
         }
@@ -30,13 +30,13 @@ namespace DAL
         /// <summary>
         /// used only after logging in, so the credentials are confirmed. (userName)
         /// </summary>
-        public static int AddOfferWS(string userName, string phone, string company, string pos)
+        public static bool AddOfferWS(string userName, string phone, string company, string pos)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
             int userID = GetUserID(userName);
             string sql = $"INSERT INTO [Jobs] ([UserID], [Phone], [Company], [Position]) VALUES ({userID}, '{phone}', '{company}', '{pos}');";
             int dtID = helper.InsertWithAutoNumKey(sql);
-            return dtID;
+            return dtID != -1;
         }
 
         public static int countOffers()
