@@ -8,7 +8,9 @@ namespace DAL
 {
     public class UserDB
     {
-
+        /// <summary>
+        /// return data row of user by username
+        /// </summary>
         public static DataRow ReturnUser(string userName)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -20,6 +22,10 @@ namespace DAL
             }
             return null;
         }
+
+        /// <summary>
+        /// adds username
+        /// </summary>
         public static int AddUser(string userName, string password, string firstname)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -28,6 +34,9 @@ namespace DAL
             return dtID;
         }
 
+        /// <summary>
+        /// checkCredentials
+        /// </summary>
         public static bool CheckCredentials(string userName, string password)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -36,6 +45,9 @@ namespace DAL
             return dt.Rows.Count > 0;
         }
 
+        /// <summary>
+        /// return user Row from the db by the user credentials
+        /// </summary>
         public static DataRow ReturnUserByCredentials(string userName, string password)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -51,6 +63,9 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// checks if username exists
+        /// </summary>
         public static bool CheckUserName(string userName)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -59,6 +74,9 @@ namespace DAL
             return dt.Rows.Count > 0;
         }
 
+        /// <summary>
+        /// return username fname by the username
+        /// </summary>
         public static string GetUserFName(string username)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);

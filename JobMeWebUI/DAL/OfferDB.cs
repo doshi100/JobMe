@@ -17,7 +17,10 @@ namespace DAL
             return dt;
         }
 
-
+        /// <summary>
+        /// adds an offer
+        /// </summary>
+        
         public static int AddOffer(int userID, string phone, string company, string pos)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -39,6 +42,7 @@ namespace DAL
             return dtID != -1;
         }
 
+
         public static int countOffers()
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);
@@ -47,6 +51,10 @@ namespace DAL
             return (int)dt.Rows[0]["offers"];
         }
 
+        /// <summary>
+        /// get user id by username.
+        /// </summary>
+        
         public static int GetUserID(string username)
         {
             DBHelper helper = new DBHelper(Constants.PROVIDER, Constants.PATH);

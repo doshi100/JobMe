@@ -12,17 +12,24 @@ namespace BL
         public string FirstName { get; set; }
         public string username { get; set; }
 
+        /// <summary>
+        /// empty constructor
+        /// </summary>
         public UserWS()
         {
 
         }
-
+        /// <summary>
+        /// build userWS by DataRow
+        /// </summary>
         public UserWS(DataRow row)
         {
             this.FirstName = (string)row["FirstName"];
             this.username = (string)row["UserName"];
         }
-
+        /// <summary>
+        /// return UserWS by username
+        /// </summary>
         public static UserWS ReturnUser(string userName)
         {
             DataRow rowUser = UserDB.ReturnUser(userName);
