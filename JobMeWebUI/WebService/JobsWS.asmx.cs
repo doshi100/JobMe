@@ -17,7 +17,9 @@ namespace WebService
     // [System.Web.Script.Services.ScriptService]
     public class JobsWS : System.Web.Services.WebService
     {
-
+        /// <summary>
+        /// returns a list of jobs.
+        /// </summary>
         [WebMethod]
         public List<JobOffer> ReturnJobOffers()
         {
@@ -37,11 +39,11 @@ namespace WebService
         /// add Job Offer to the DB
         /// </summary>
         [WebMethod]
-        public bool AddJobOffer(string username, string password, string phone, string company, string pos)
+        public bool AddJobOffer(string username, string password, JobOffer offer)
         {
             if(LogIn(username, password))
             {
-                return JobOffer.AddOfferWS(username, phone, company, pos);
+                return JobOffer.AddOfferWS(username, offer.Phone, offer.Company, offer.Position);
             }
             return false;
         }
